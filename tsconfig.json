@@ -30,5 +30,5 @@
       "@contexts/*": ["./src/contexts/*"]
     }
   },
-  "include": ["src", "tailwind.config.js"]
+  "include": ["src", "utils", "tailwind.config.js"]
 }
