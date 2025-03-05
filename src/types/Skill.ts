@@ -12,4 +12,7 @@ export class Skill extends BasicObject {
   static readonly MATERIALS_AND_TOOLS_PRODUCTION = new Skill(5, "Materials and Tools Production");
   static readonly ORE_GENERATION = new Skill(6, "Ore Generation");
   static readonly FURNITURE_PRODUCTION = new Skill(7, "Furniture Production");
+  static readonly NATURE_CIRCULATION = new Skill(8, "Nature Circulation");
+  static readonly BANISH = new Skill(9, "Banish");
+  static readonly COMBAT = new Skill(10, "Combat");
 }
