@@ -14,21 +14,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "paths": {
-      "@components/*": ["./src/components/"],
-      "@constants": ["./src/constants/index"],
-      "@enums/*": ["./src/enums/index"],
-      "@hooks": ["./src/hooks/index"],
-      "@stores/*": ["./src/stores/index"],
-      "@types/*": ["./src/types/"],
-      "@functions/*": ["./src/functions/"],
-      "@styles/*": ["./src/styles/*"],
-      "@assets/*": ["./public/*"],
-      "@helper/*": ["./types/*"],
-      "@libs/*": ["./src/libs/*"],
-      "@contexts/*": ["./src/contexts/*"]
-    }
+    "jsx": "react-jsx"
   },
   "include": ["src", "utils", "tailwind.config.js"]
 }
