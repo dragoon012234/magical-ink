@@ -1,6 +1,6 @@
-import { Resource } from "./Resource";
+import { BasicObject } from "./BasicObject";
 
-export class Skill extends Resource {
+export class Skill extends BasicObject {
   get img(): string {
     return `${process.env.PUBLIC_URL}/imgs/skills/${this.filename}.png`;
   }
