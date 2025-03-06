@@ -1,9 +1,12 @@
+import type { Ingredient } from "./Ingredient";
 import { Resource } from "./Resource";
 import type { Skill } from "./Skill";
 
 export class Product extends Resource {
   duration: number;
   cost: number;
+
+  ingredient: Ingredient[];
 
   constructor(
     id: number,
@@ -17,6 +20,8 @@ export class Product extends Resource {
     super(id, name, price, wishPrice, category);
     this.duration = duration;
     this.cost = cost;
+
+    this.ingredient = [];
   }
 
   get durationx5(): number {
