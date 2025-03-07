@@ -1,7 +1,7 @@
 import { LGraph, LGraphCanvas } from "litegraph.js";
 import { useEffect, useRef } from "react";
 
-import { items, skills } from "./types";
+import { items, Product, skills } from "./types";
 
 function App() {
   const canvasRef = useRef<HTMLCanvasElement>(undefined as any);
@@ -16,6 +16,9 @@ function App() {
 
     for (const skill of skills) graph.add(skill.node);
     for (const item of items) graph.add(item.node);
+    for (const item of items)
+      if (item instanceof Product)
+        for (const { ingredient } of item.ingredient) ingredient.node.connect(0, item.node, ingredient.name);
 
     graph.start();
   }, []);

@@ -11,5 +11,8 @@ test("renders learn react link", () => {
 });
 
 test("Setup data correct", () => {
-  console.log(items);
+  for (const item of items) {
+    expect(item.node).toBeDefined();
+    expect(item.layer).toBeGreaterThan(0);
+  }
 });
