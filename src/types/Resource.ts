@@ -1,10 +1,14 @@
 import { BasicObject } from "./BasicObject";
 import type { Skill } from "./Skill";
+import type { ProductNode } from "../litegraph";
 
 export class Resource extends BasicObject {
   price: number;
   wishPrice: number;
   category: Skill;
+
+  layer: number = 0;
+  node!: ProductNode;
 
   constructor(id: number, name: string, price: number, wishPrice: number, category: Skill) {
     super(id, name);

@@ -7,6 +7,7 @@ import ReactDOM from "react-dom/client";
 import "./types";
 import "litegraph.js";
 import "./litegraph";
+import "./starter";
 
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";

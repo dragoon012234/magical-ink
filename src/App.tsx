@@ -1,8 +1,7 @@
-import { LGraph, LGraphCanvas, LiteGraph } from "litegraph.js";
+import { LGraph, LGraphCanvas } from "litegraph.js";
 import { useEffect, useRef } from "react";
 
-import type { ProductNode } from "./litegraph";
-import { CookingProduct, FarmProduct } from "./types";
+import { items, skills } from "./types";
 
 function App() {
   const canvasRef = useRef<HTMLCanvasElement>(undefined as any);
@@ -15,14 +14,8 @@ function App() {
     canvas.allow_reconnect_links = false;
     canvas.resize();
 
-    const wheat = LiteGraph.createNode("magicalink/product", "", { info: FarmProduct.WHEAT }) as ProductNode;
-    wheat.pos = [200, 200];
-    graph.add(wheat);
-
-    const ryeBread = LiteGraph.createNode("magicalink/product", "", { info: CookingProduct.RYE_BREAD }) as ProductNode;
-    ryeBread.pos = [400, 300];
-    wheat.connect(0, ryeBread, wheat._info.name);
-    graph.add(ryeBread);
+    for (const skill of skills) graph.add(skill.node);
+    for (const item of items) graph.add(item.node);
 
     graph.start();
   }, []);

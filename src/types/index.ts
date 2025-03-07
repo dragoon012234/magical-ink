@@ -7,11 +7,12 @@ import { MonsterItem } from "./MonsterItem";
 import { NatureItem } from "./NatureItem";
 import { Ore } from "./Ore";
 import { Product } from "./Product";
+import { Resource } from "./Resource";
 import { Skill } from "./Skill";
 import { TreeFarmProduct } from "./TreeFarmProduct";
 import { WorldMonsterItem } from "./WoldMonsterItem";
 
-const items = [
+const items: (Product | Resource)[] = [
   FarmProduct.WHEAT,
   FarmProduct.STRAWBERRY,
   FarmProduct.TOMATO,
@@ -276,8 +277,22 @@ const items = [
   );
 })();
 
+const skills = [
+  Skill.FARM,
+  Skill.TREE_FARM,
+  Skill.COOKING,
+  Skill.ALCHEMIZE,
+  Skill.MATERIALS_AND_TOOLS_PRODUCTION,
+  Skill.ORE_GENERATION,
+  Skill.FURNITURE_PRODUCTION,
+  Skill.NATURE_CIRCULATION,
+  Skill.BANISH,
+  Skill.COMBAT,
+];
+
 export {
   Skill,
+  Resource,
   Product,
   FarmProduct,
   TreeFarmProduct,
@@ -290,4 +305,5 @@ export {
   WorldMonsterItem,
   MonsterItem,
   items,
+  skills,
 };

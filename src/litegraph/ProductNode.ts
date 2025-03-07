@@ -1,9 +1,9 @@
 import { LGraphNode, LiteGraph } from "litegraph.js";
 
-import type { Product } from "../types";
+import type { Product, Resource } from "../types";
 
 export class ProductNode extends LGraphNode {
-  _info!: Product;
+  _info!: Product | Resource;
   _image!: HTMLImageElement;
   _imageLoaded = false;
 
@@ -33,26 +33,29 @@ export class ProductNode extends LGraphNode {
     }
   }
 
-  set info(v: Product) {
+  set info(v: Product | Resource) {
     this._info = v;
     this.title = v.name;
     this.addOutput("", "number");
     const img = (this._image = new Image());
     img.src = v.img;
     img.onload = this._onImageLoaded.bind(this);
-    for (const { ingredient } of v.ingredient) {
-      this.addInput(`${ingredient.name}`, "number");
-    }
+    if ((v as Product).ingredient)
+      for (const { ingredient } of (v as Product).ingredient) {
+        this.addInput(`${ingredient.name}`, "number");
+      }
 
     this.addReadonlyWidget("Price", v.price.toString());
     this.addReadonlyWidget("Wish Price", v.wishPrice.toString());
-    this.addTitleWidget("Production");
-    this.addReadonlyWidget("Duration", v.duration.toString());
-    this.addReadonlyWidget("Cost", v.cost.toString());
-    this.addReadonlyWidget("Duration (x5)", v.durationx5.toString());
-    this.addReadonlyWidget("Cost (x5)", v.costx5.toString());
-    for (const { ingredient, count } of v.ingredient) {
-      this.addReadonlyWidget(ingredient.name, count.toString());
+    if ((v as Product).ingredient) {
+      this.addTitleWidget("Production");
+      this.addReadonlyWidget("Duration", (v as Product).duration.toString());
+      this.addReadonlyWidget("Cost", (v as Product).cost.toString());
+      this.addReadonlyWidget("Duration (x5)", (v as Product).durationx5.toString());
+      this.addReadonlyWidget("Cost (x5)", (v as Product).costx5.toString());
+      for (const { ingredient, count } of (v as Product).ingredient) {
+        this.addReadonlyWidget(ingredient.name, count.toString());
+      }
     }
     this.setSize(this.computeSize());
   }
