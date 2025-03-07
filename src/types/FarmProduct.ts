@@ -7,7 +7,7 @@ export class FarmProduct extends Product {
   }
 
   static readonly WHEAT = new FarmProduct(1, "Wheat", 8, 22, 20, 2);
-  static readonly STAWBERRY = new FarmProduct(2, "Stawberry", 18, 44, 40, 7);
+  static readonly STRAWBERRY = new FarmProduct(2, "Strawberry", 18, 44, 40, 7);
   static readonly TOMATO = new FarmProduct(3, "Tomato", 77, 159, 150, 33);
   static readonly POPPURI_PETAL = new FarmProduct(4, "Poppuri Petal", 226, 437, 420, 103);
   static readonly CARROT = new FarmProduct(5, "Carrot", 855, 1379, 1320, 467);

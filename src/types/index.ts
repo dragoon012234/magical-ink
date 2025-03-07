@@ -11,7 +11,7 @@ import { WorldMonsterItem } from "./WoldMonsterItem";
 
 const items = [
   FarmProduct.WHEAT,
-  FarmProduct.STAWBERRY,
+  FarmProduct.STRAWBERRY,
   FarmProduct.TOMATO,
   FarmProduct.POPPURI_PETAL,
   FarmProduct.CARROT,
@@ -43,6 +43,20 @@ const items = [
   CookingProduct.ROSEMARY_FOCACCIA,
   CookingProduct.CHERRY_JUICE,
   CookingProduct.LAVENDER_COOKIE,
+
+  AlchemizeProduct.SMALL_RED_POTION,
+  AlchemizeProduct.SMALL_BLUE_POTION,
+  AlchemizeProduct.FORESTS_MAGIC_POWDER,
+  AlchemizeProduct.COLD_RESISTANCE_POTION,
+  AlchemizeProduct.MEDIUM_RED_POTION,
+  AlchemizeProduct.MEDIUM_BLUE_POTION,
+  AlchemizeProduct.NATURES_MAGIC_POWDER,
+  AlchemizeProduct.STURDY_POTION,
+  AlchemizeProduct.CONCENTRATION_POTION,
+  AlchemizeProduct.STICKY_HERB_LUMP,
+  AlchemizeProduct.SPIRIT_SPRING_WATER,
+  AlchemizeProduct.LARGE_RED_POTION,
+  AlchemizeProduct.LARGE_BLUE_POTION,
 
   MaterialTool.WOODEN_NAIL,
   MaterialTool.WOODEN_PLANK,
@@ -89,7 +103,7 @@ const items = [
 
 (function setupCookingIngredient() {
   CookingProduct.RYE_BREAD.ingredient.push({ ingredient: FarmProduct.WHEAT, count: 2 });
-  CookingProduct.STRAWBERRY_JUICE.ingredient.push({ ingredient: FarmProduct.STAWBERRY, count: 2 });
+  CookingProduct.STRAWBERRY_JUICE.ingredient.push({ ingredient: FarmProduct.STRAWBERRY, count: 2 });
   CookingProduct.APPLE_JUICE.ingredient.push({ ingredient: TreeFarmProduct.APPLE, count: 2 });
   CookingProduct.TOMATO_SALAD.ingredient.push({ ingredient: FarmProduct.TOMATO, count: 2 });
   CookingProduct.RAISIN_BREAD.ingredient.push(
@@ -151,7 +165,7 @@ const items = [
 (function setupAlchemizeIngredient() {
   AlchemizeProduct.SMALL_RED_POTION.ingredient.push(
     { ingredient: NatureItem.HERB, count: 2 },
-    { ingredient: FarmProduct.STAWBERRY, count: 2 },
+    { ingredient: FarmProduct.STRAWBERRY, count: 2 },
   );
   AlchemizeProduct.SMALL_BLUE_POTION.ingredient.push(
     { ingredient: NatureItem.HERB, count: 2 },
@@ -220,7 +234,7 @@ const items = [
   );
   MaterialTool.MORTAR_AND_PESTLE.ingredient.push(
     { ingredient: Ore.SOIL, count: 2 },
-    { ingredient: MaterialTool.MORTAR_AND_PESTLE, count: 1 },
+    { ingredient: MaterialTool.WOODEN_HAMMER, count: 1 },
   );
   MaterialTool.PICKAXE.ingredient.push(
     { ingredient: Ore.IRON_ORE, count: 1 },
