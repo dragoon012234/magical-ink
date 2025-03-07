@@ -6,6 +6,8 @@ import { MaterialTool } from "./MaterialTool";
 import { MonsterItem } from "./MonsterItem";
 import { NatureItem } from "./NatureItem";
 import { Ore } from "./Ore";
+import { Product } from "./Product";
+import { Skill } from "./Skill";
 import { TreeFarmProduct } from "./TreeFarmProduct";
 import { WorldMonsterItem } from "./WoldMonsterItem";
 
@@ -275,6 +277,8 @@ const items = [
 })();
 
 export {
+  Skill,
+  Product,
   FarmProduct,
   TreeFarmProduct,
   CookingProduct,
