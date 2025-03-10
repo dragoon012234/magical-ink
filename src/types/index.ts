@@ -6,10 +6,13 @@ import { MaterialTool } from "./MaterialTool";
 import { MonsterItem } from "./MonsterItem";
 import { NatureItem } from "./NatureItem";
 import { Ore } from "./Ore";
+import { Product } from "./Product";
+import { Resource } from "./Resource";
+import { Skill } from "./Skill";
 import { TreeFarmProduct } from "./TreeFarmProduct";
 import { WorldMonsterItem } from "./WoldMonsterItem";
 
-const items = [
+const items: (Product | Resource)[] = [
   FarmProduct.WHEAT,
   FarmProduct.STRAWBERRY,
   FarmProduct.TOMATO,
@@ -274,7 +277,72 @@ const items = [
   );
 })();
 
+(function setupIngredientChain() {
+  const layeredItems: Resource[][] = [];
+
+  let remainItems = items.length;
+
+  const ingredientItems = [];
+  for (let i = 0; i < items.length; ++i) {
+    const item = items[i];
+    if (item instanceof Product) {
+      if (item.ingredient.length === 0) {
+        item.layer = 1;
+        ingredientItems.push(item);
+      }
+    } else {
+      item.layer = 1;
+      ingredientItems.push(item);
+    }
+  }
+  layeredItems.push(ingredientItems);
+  remainItems -= ingredientItems.length;
+
+  let layerNumber = 1;
+  while (remainItems > 0) {
+    const layer = [];
+    ++layerNumber;
+
+    for (let i = 0; i < items.length; ++i) {
+      const item = items[i] as Product; // As this rate, there are no Resource anymore
+      if (item.layer !== 0) continue;
+
+      let isThisLayer = true;
+      for (const { ingredient } of item.ingredient) {
+        if (ingredient.layer === 0 || ingredient.layer >= layerNumber) {
+          isThisLayer = false;
+          break;
+        }
+      }
+
+      if (isThisLayer) {
+        item.layer = layerNumber;
+        layer.push(item);
+      }
+    }
+
+    layeredItems.push(layer);
+    remainItems -= layer.length;
+  }
+})();
+
+const skills = [
+  Skill.FARM,
+  Skill.TREE_FARM,
+  Skill.COOKING,
+  Skill.ALCHEMIZE,
+  Skill.MATERIALS_AND_TOOLS_PRODUCTION,
+  Skill.ORE_GENERATION,
+  Skill.FURNITURE_PRODUCTION,
+  Skill.NATURE_CIRCULATION,
+  Skill.BANISH,
+  Skill.COMBAT,
+];
+
 export {
+  Skill,
+  Resource,
+  Product,
   FarmProduct,
   TreeFarmProduct,
   CookingProduct,
@@ -286,4 +354,5 @@ export {
   WorldMonsterItem,
   MonsterItem,
   items,
+  skills,
 };

@@ -1,6 +1,9 @@
 import { BasicObject } from "./BasicObject";
 
 export class Skill extends BasicObject {
+  supportReduceTime: boolean = true;
+  currentReduceTime: number = 0;
+
   get img(): string {
     return `${process.env.PUBLIC_URL}/imgs/skills/${this.filename}.png`;
   }

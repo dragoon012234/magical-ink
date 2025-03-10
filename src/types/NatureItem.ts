@@ -7,8 +7,8 @@ export class NatureItem extends Resource {
   }
 
   static readonly PEBBLE = new NatureItem(1, "Pebble", 7, 22);
-  static readonly BRANCH = new NatureItem(1, "Branch", 7, 22);
-  static readonly BOULDER = new NatureItem(1, "Boulder", 7, 22);
-  static readonly LOG = new NatureItem(1, "Log", 7, 22);
-  static readonly HERB = new NatureItem(1, "Herb", 7, 22);
+  static readonly BRANCH = new NatureItem(2, "Branch", 7, 22);
+  static readonly BOULDER = new NatureItem(3, "Boulder", 7, 22);
+  static readonly LOG = new NatureItem(4, "Log", 7, 22);
+  static readonly HERB = new NatureItem(5, "Herb", 7, 22);
 }

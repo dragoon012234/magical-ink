@@ -6,6 +6,8 @@ export class Resource extends BasicObject {
   wishPrice: number;
   category: Skill;
 
+  layer: number = 0;
+
   constructor(id: number, name: string, price: number, wishPrice: number, category: Skill) {
     super(id, name);
     this.price = price;
