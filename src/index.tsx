@@ -3,6 +3,12 @@ import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+// Setup data
+import "./types";
+import "litegraph.js";
+import "./litegraph";
+import "./starter";
+
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
