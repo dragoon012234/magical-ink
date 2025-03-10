@@ -1,7 +1,7 @@
 import type { ThemeContextType } from "@rewind-ui/core";
 import { ThemeProvider, useTheme } from "@rewind-ui/core";
 
-import { ResourceAvatar } from "./components";
+import { ProductItem } from "./components";
 import { avatarStyles } from "./theme";
 import { Furniture } from "./types";
 
@@ -19,9 +19,9 @@ function App() {
 
   return (
     <ThemeProvider value={themeContext}>
-      <ResourceAvatar resource={Furniture.NEATLY_ARRANGED_TABLE} />
-      <ResourceAvatar resource={Furniture.RABBIT_SCULPTURE_CHAIR} />
-      <ResourceAvatar resource={Furniture.RABBIT_SCULPTURE_DRAWER} />
+      <div className='m-10'>
+        <ProductItem product={Furniture.NEATLY_ARRANGED_TABLE} />
+      </div>
     </ThemeProvider>
   );
 }
