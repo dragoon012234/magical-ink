@@ -7,6 +7,7 @@ export class Resource extends BasicObject {
   category: Skill;
 
   layer: number = 0;
+  isLastChainProduct: boolean = true;
 
   constructor(id: number, name: string, price: number, wishPrice: number, category: Skill) {
     super(id, name);

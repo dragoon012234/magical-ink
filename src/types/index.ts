@@ -324,6 +324,12 @@ const items: (Product | Resource)[] = [
     layeredItems.push(layer);
     remainItems -= layer.length;
   }
+
+  for (const item of items)
+    if (item instanceof Product)
+      for (const { ingredient } of item.ingredient) {
+        ingredient.isLastChainProduct = false;
+      }
 })();
 
 const skills = [
@@ -356,3 +362,5 @@ export {
   items,
   skills,
 };
+
+export * from "./Ingredient";
