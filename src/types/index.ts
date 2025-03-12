@@ -329,6 +329,7 @@ const items: (Product | Resource)[] = [
     if (item instanceof Product)
       for (const { ingredient } of item.ingredient) {
         ingredient.isLastChainProduct = false;
+        ingredient.ingredientFor.push(item);
       }
 })();
 

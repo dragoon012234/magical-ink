@@ -1,4 +1,5 @@
 import { BasicObject } from "./BasicObject";
+import type { Product } from "./Product";
 import type { Skill } from "./Skill";
 
 export class Resource extends BasicObject {
@@ -6,6 +7,7 @@ export class Resource extends BasicObject {
   wishPrice: number;
   category: Skill;
 
+  ingredientFor: Product[];
   layer: number = 0;
   isLastChainProduct: boolean = true;
 
@@ -14,6 +16,8 @@ export class Resource extends BasicObject {
     this.price = price;
     this.wishPrice = wishPrice;
     this.category = category;
+
+    this.ingredientFor = [];
   }
 
   get img(): string {
