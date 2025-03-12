@@ -1,4 +1,5 @@
 import React from "react";
+
 import type { Product, Resource } from "../types";
 import { isProduct } from "../utils";
 import { ProductItem } from "./ProductItem";
@@ -25,15 +26,21 @@ export function ProduceTable(props: Props) {
   };
 
   const ingredientOrigin: [number, number] = [0, (sizeRequired.height - ingredientSide.size[1]) / 2];
+  const ingredientNodes = resolveIngredientNode(ingredientSide, ingredientOrigin);
 
-  const ingredientNode = resolveIngredientNode(ingredientSide, ingredientOrigin);
+  const produceOrigin: [number, number] = [
+    ingredientSide.size[0] - 96,
+    (sizeRequired.height - produceSide.size[1]) / 2,
+  ];
+  const produceNodes = resolveProduceNode(produceSide, produceOrigin);
 
   return (
     <div className='relative bg-slate-200' style={sizeRequired}>
       <div className='absolute' style={refPos}>
         {ingredientSide.jsx}
       </div>
-      {ingredientNode}
+      {ingredientNodes}
+      {produceNodes}
     </div>
   );
 }
@@ -55,7 +62,7 @@ function calProduceNode(resource: Resource): NodeInfo {
   const childNode = resource.ingredientFor.map(calProduceNode);
   const childSize = [
     childNode.reduce((maxWidth, cur) => (cur.size[0] > maxWidth ? cur.size[0] : maxWidth), 0),
-    childNode.reduce((height, cur) => cur.size[0] + height, 0),
+    childNode.reduce((height, cur) => cur.size[1] + height, 0),
   ];
 
   return {
@@ -76,7 +83,7 @@ function calIngredientNode(resource: Resource | Product): NodeInfo {
   const childNode = resource.ingredient.map((v) => calIngredientNode(v.ingredient));
   const childSize = [
     childNode.reduce((maxWidth, cur) => (cur.size[0] > maxWidth ? cur.size[0] : maxWidth), 0),
-    childNode.reduce((height, cur) => cur.size[0] + height, 0),
+    childNode.reduce((height, cur) => cur.size[1] + height, 0),
   ];
 
   return {
@@ -86,21 +93,42 @@ function calIngredientNode(resource: Resource | Product): NodeInfo {
   };
 }
 
+function resolveProduceNode(info: NodeInfo, origin: [number, number], includeParent?: boolean): React.ReactElement[] {
+  let height = origin[1];
+  const jsxs = info.child
+    ? info.child.flatMap((v) => {
+        const child = resolveProduceNode(v, [origin[0] + 96, height], true);
+        height += v.size[1];
+        return child;
+      })
+    : [];
+
+  if (includeParent) {
+    const size = info.size;
+    const pos = { left: origin[0] + 16, top: origin[1] + (size[1] - 96) / 2 + 16 };
+    jsxs.push(
+      <div className='absolute' style={pos}>
+        {info.jsx}
+      </div>,
+    );
+  }
+
+  return jsxs;
+}
+
 function resolveIngredientNode(
   info: NodeInfo,
   origin: [number, number],
   includeParent?: boolean,
 ): React.ReactElement[] {
-  if (!info.child) {
-    return [];
-  }
-
-  let height = origin[1];
-  const jsxs = info.child.flatMap((v) => {
-    const child = resolveIngredientNode(v, [origin[0], height], true);
-    height += v.size[1];
-    return child;
-  });
+  let top = origin[1];
+  const jsxs = info.child
+    ? info.child.flatMap((v) => {
+        const child = resolveIngredientNode(v, [origin[0] + (info.size[0] - v.size[0] - 96), top], true);
+        top += v.size[1];
+        return child;
+      })
+    : [];
 
   if (includeParent) {
     const size = info.size;
