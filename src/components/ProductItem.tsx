@@ -22,9 +22,11 @@ export function ProductItem(props: Props) {
       <Popover.Trigger>
         <button className='relative'>
           <ResourceAvatar resource={product} />
-          <Ribbon className='z-50 -translate-x-1' color='blue' radius='lg' shadowColor='blue' size='sm' tone='glossy'>
-            <ProductSvg size={16} className='text-white' />
-          </Ribbon>
+          {product.isLastChainProduct && (
+            <Ribbon className='z-50 -translate-x-1' color='blue' radius='lg' shadowColor='blue' size='sm' tone='glossy'>
+              <ProductSvg size={16} className='text-white' />
+            </Ribbon>
+          )}
         </button>
       </Popover.Trigger>
       <Popover.Content>
@@ -58,7 +60,9 @@ export function ProductItem(props: Props) {
               </Table.Tfoot>
             </Table>
           </div>
+
           <div className='w-[1px] bg-opacity-30 bg-black' />
+
           <div className='flex flex-col justify-start content-start gap-2'>
             <Text variant='h5'>{product.name}</Text>
             <Table outerBorders={false} horizontalBorders={false} radius='base' size='sm' striped={false}>
