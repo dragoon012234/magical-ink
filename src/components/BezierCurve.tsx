@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 type Props = {
   /**
    * 2 element array, like [width, height]
@@ -11,21 +13,26 @@ type Props = {
    */
   value?: [number, number, number, number];
   strokeWidth?: number;
-} & Pick<SvgProps, "className">;
+};
 
 const defaultProps: Required<Props> = {
   size: [200, 200],
   strokeWidth: 2,
   value: [0.4, 0, 1, 0.6], // easeIn
-  className: "stroke-black",
 };
 
-export function BezierCurve(props: Props) {
+export function BezierCurve(
+  props: Props & {
+    className?: string;
+    style?: CSSProperties;
+  },
+) {
   const {
     value = defaultProps.value,
     size = defaultProps.size,
     strokeWidth = defaultProps.strokeWidth,
-    className = defaultProps.className,
+    className,
+    style,
   } = props;
   const [width, height] = size;
   const { startCoordinate, endCoordinate, startBezierHandle, endBezierHandle } = bezierCurveParamsFrom(size, value);
@@ -34,7 +41,14 @@ export function BezierCurve(props: Props) {
   const svgHeight = height + strokeWidth * 2;
 
   return (
-    <svg className={className} fill='none' width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
+    <svg
+      className={className}
+      style={style}
+      fill='none'
+      width={svgWidth}
+      height={svgHeight}
+      viewBox={`0 0 ${svgWidth} ${svgHeight}`}
+    >
       <g transform={`translate(${strokeWidth}, ${strokeWidth})`}>
         <path
           strokeWidth={strokeWidth}
