@@ -33,7 +33,7 @@ export function ProductItem(props: Props) {
         <div className='flex flex-row justify-stretch content-stretch gap-2'>
           <div className='w-[200px] flex flex-col justify-start content-start gap-2'>
             <Text variant='h5'>Produce</Text>
-            {ingredient.length && (
+            {!!ingredient.length && (
               <div className='flex flex-row flex-wrap gap-1 justify-start content-start'>
                 {ingredient.map(IngredientChip)}
               </div>
