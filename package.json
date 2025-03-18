@@ -18,6 +18,7 @@
     "class-variance-authority": "^0.7.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-router": "^7.3.0",
     "react-scripts": "5.0.1",
     "tailwind-merge": "^3.0.2",
     "tailwind-scrollbar": "^4.0.1",
@@ -36,8 +37,10 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "deploy:force": "gh-pages -d build -f",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "clean": "rm -rf node_modules/.cache/",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint \"{src,test}/**/*.{js,ts,json,tsx,jsx}\" --fix",
