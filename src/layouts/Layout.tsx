@@ -3,8 +3,7 @@ import { Breadcrumbs, Button, Overlay, Sidebar, useSidebar } from "@rewind-ui/co
 import { useState } from "react";
 import { Link, Outlet, useLocation } from "react-router";
 
-import { ProductSvg } from "../svgs";
-import { MenuSvg } from "../svgs/MenuSvg";
+import { HomeSvg, MenuSvg, ProductSvg } from "../svgs";
 import { FarmProduct } from "../types";
 
 export function Layout() {
@@ -82,6 +81,9 @@ export function Layout() {
           <header className='flex flex-row sticky top-0 px-8 items-center bg-white border-b border-b-gray-100 w-full shadow-sm min-h-[4rem]'>
             <span>
               <Breadcrumbs>
+                <Breadcrumbs.Item>
+                  <HomeSvg />
+                </Breadcrumbs.Item>
                 <Breadcrumbs.Item>Items</Breadcrumbs.Item>
               </Breadcrumbs>
             </span>

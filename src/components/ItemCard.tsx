@@ -1,8 +1,7 @@
 import { Card, Image, Text } from "@rewind-ui/core";
 import { useNavigate } from "react-router";
 
-import { CoinHandover } from "../svgs/CoinHandover";
-import { CoinSvg } from "../svgs/CoinSvg";
+import { CoinHandoverSvg, CoinSvg } from "../svgs";
 import type { Resource } from "../types";
 import { numberFormat } from "../utils";
 
@@ -35,7 +34,7 @@ export function ItemCard(props: Props) {
         </div>
 
         <div className='flex flex-row gap-1 justify-start items-center'>
-          <CoinHandover size={24} />
+          <CoinHandoverSvg size={24} />
           <Text>{numberFormat(item.wishPrice)}</Text>
         </div>
       </Card.Body>

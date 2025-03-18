@@ -1,9 +1,9 @@
 import { Popover, Ribbon, Table, Text } from "@rewind-ui/core";
 
-import type { Resource } from "../types";
-import { ResourceAvatar } from "./ResourceAvatar";
 import { ProductSvg } from "../svgs";
 import { numberFormat } from "../utils";
+import { ResourceAvatar } from "./ResourceAvatar";
+import type { Resource } from "../types";
 
 type Props = {
   resource: Resource;

@@ -1,11 +1,11 @@
 import type { CSSProperties } from "react";
 import React from "react";
 
-import type { Product, Resource } from "../types";
 import { isProduct } from "../utils";
 import { BezierCurve } from "./BezierCurve";
 import { ProductItem } from "./ProductItem";
 import { ResourceItem } from "./ResourceItem";
+import type { Product, Resource } from "../types";
 
 type Props = {
   referenceResource: Resource;

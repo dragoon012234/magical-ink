@@ -1,10 +1,10 @@
 import { Popover, Ribbon, Table, Text } from "@rewind-ui/core";
 
-import type { Product } from "../types";
-import { ResourceAvatar } from "./ResourceAvatar";
+import { ProductSvg } from "../svgs";
 import { durationFormat, numberFormat } from "../utils";
 import { IngredientChip } from "./IngredientChip";
-import { ProductSvg } from "../svgs";
+import { ResourceAvatar } from "./ResourceAvatar";
+import type { Product } from "../types";
 
 type Props = {
   product: Product;

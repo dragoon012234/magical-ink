@@ -1,4 +1,4 @@
-export function CoinHandover(props: SvgProps) {
+export function CoinHandoverSvg(props: SvgProps) {
   const { size = 24, className } = props;
   const _size = `${size}px`;
   return (
