@@ -20,6 +20,24 @@ export class AlchemizeProduct extends Product {
   static readonly SPIRIT_SPRING_WATER: AlchemizeProduct;
   static readonly LARGE_RED_POTION: AlchemizeProduct;
   static readonly LARGE_BLUE_POTION: AlchemizeProduct;
+
+  static all(): AlchemizeProduct[] {
+    return [
+      AlchemizeProduct.SMALL_RED_POTION,
+      AlchemizeProduct.SMALL_BLUE_POTION,
+      AlchemizeProduct.FORESTS_MAGIC_POWDER,
+      AlchemizeProduct.COLD_RESISTANCE_POTION,
+      AlchemizeProduct.MEDIUM_RED_POTION,
+      AlchemizeProduct.MEDIUM_BLUE_POTION,
+      AlchemizeProduct.NATURES_MAGIC_POWDER,
+      AlchemizeProduct.STURDY_POTION,
+      AlchemizeProduct.CONCENTRATION_POTION,
+      AlchemizeProduct.STICKY_HERB_LUMP,
+      AlchemizeProduct.SPIRIT_SPRING_WATER,
+      AlchemizeProduct.LARGE_RED_POTION,
+      AlchemizeProduct.LARGE_BLUE_POTION,
+    ];
+  }
 }
 
 (() => {

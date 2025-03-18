@@ -16,6 +16,20 @@ export class MaterialTool extends Product {
   static readonly MORTAR_AND_PESTLE: MaterialTool;
   static readonly PICKAXE: MaterialTool;
   static readonly SANDPAPER: MaterialTool;
+
+  static all(): MaterialTool[] {
+    return [
+      MaterialTool.WOODEN_NAIL,
+      MaterialTool.WOODEN_PLANK,
+      MaterialTool.WOODEN_HAMMER,
+      MaterialTool.GLASS,
+      MaterialTool.NAIL,
+      MaterialTool.SAND_GRAIN_TWEEZERS,
+      MaterialTool.MORTAR_AND_PESTLE,
+      MaterialTool.PICKAXE,
+      MaterialTool.SANDPAPER,
+    ];
+  }
 }
 
 (() => {

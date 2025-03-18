@@ -12,6 +12,10 @@ export class Ore extends Product {
   static readonly METAL_SCRAP: Ore;
   static readonly IRON_ORE: Ore;
   static readonly COPPER_ORE: Ore;
+
+  static all(): Ore[] {
+    return [Ore.SAND, Ore.SOIL, Ore.METAL_SCRAP, Ore.IRON_ORE, Ore.COPPER_ORE];
+  }
 }
 
 (() => {

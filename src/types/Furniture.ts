@@ -10,6 +10,10 @@ export class Furniture extends Product {
   static readonly RABBIT_SCULPTURE_CHAIR: Furniture;
   static readonly NEATLY_ARRANGED_TABLE: Furniture;
   static readonly RABBIT_SCULPTURE_DRAWER: Furniture;
+
+  static all(): Furniture[] {
+    return [Furniture.RABBIT_SCULPTURE_CHAIR, Furniture.NEATLY_ARRANGED_TABLE, Furniture.RABBIT_SCULPTURE_DRAWER];
+  }
 }
 
 (() => {

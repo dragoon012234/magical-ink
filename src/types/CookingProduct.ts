@@ -24,6 +24,28 @@ export class CookingProduct extends Product {
   static readonly ROSEMARY_FOCACCIA: CookingProduct;
   static readonly CHERRY_JUICE: CookingProduct;
   static readonly LAVENDER_COOKIE: CookingProduct;
+
+  static all(): CookingProduct[] {
+    return [
+      CookingProduct.RYE_BREAD,
+      CookingProduct.STRAWBERRY_JUICE,
+      CookingProduct.APPLE_JUICE,
+      CookingProduct.TOMATO_SALAD,
+      CookingProduct.RAISIN_BREAD,
+      CookingProduct.TOAST,
+      CookingProduct.ORANGE_MARMALADE,
+      CookingProduct.SCRAMBLE,
+      CookingProduct.CARROT_STEW,
+      CookingProduct.MAPLE_SYRUP,
+      CookingProduct.SUGAR,
+      CookingProduct.BOTTLED_PEACHES,
+      CookingProduct.HERB_OIL,
+      CookingProduct.ROSEMARY_TEA,
+      CookingProduct.ROSEMARY_FOCACCIA,
+      CookingProduct.CHERRY_JUICE,
+      CookingProduct.LAVENDER_COOKIE,
+    ];
+  }
 }
 
 (() => {
