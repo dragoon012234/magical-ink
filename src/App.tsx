@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
 
 import { Layout } from "./layouts";
-import { ItemsPage } from "./pages";
+import { ItemPage, ItemsPage } from "./pages";
 import { avatarStyles, sidebarStyles } from "./theme";
 
 export default function App() {
@@ -21,6 +21,7 @@ export default function App() {
         <Route path='magical-ink' element={<Layout />}>
           <Route index element={<div>Dashboard</div>} />
           <Route path='items' element={<ItemsPage />} />
+          <Route path='items/:catorage/:item' element={<ItemPage />} />
         </Route>
         <Route path='*' element={<div>Not found</div>} />
       </Routes>

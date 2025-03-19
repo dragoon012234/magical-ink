@@ -333,6 +333,10 @@ const items: (Product | Resource)[] = [
       }
 })();
 
+function findItem(item?: string, category?: string) {
+  return items.find((v) => v.filename === item && v.category.filename === category);
+}
+
 const skills = [
   Skill.FARM,
   Skill.TREE_FARM,
@@ -362,6 +366,7 @@ export {
   MonsterItem,
   items,
   skills,
+  findItem,
 };
 
 export * from "./Ingredient";

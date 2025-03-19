@@ -4,6 +4,7 @@
   "homepage": "https://dragoon012234.github.io/magical-ink",
   "private": true,
   "dependencies": {
+    "@lottiefiles/dotlottie-react": "^0.13.2",
     "@rewind-ui/core": "^0.20.0",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
@@ -35,7 +36,6 @@
     "tailwindcss": "^3.4.17"
   },
   "scripts": {
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "deploy:force": "gh-pages -d build -f",
     "start": "react-scripts start",
