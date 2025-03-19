@@ -1,28 +1,23 @@
 import type { SidebarState } from "@rewind-ui/core";
-import { Breadcrumbs, Button, Overlay, Sidebar, useSidebar } from "@rewind-ui/core";
+import { Overlay, Sidebar, useSidebar } from "@rewind-ui/core";
 import { useState } from "react";
 import { Link, Outlet, useLocation } from "react-router";
 
-import { HomeSvg, MenuSvg, ProductSvg } from "../svgs";
+import { ProductSvg } from "../svgs";
 import { FarmProduct } from "../types";
 
 export function Layout() {
   console.log("Render", Layout.name);
   const location = useLocation();
-  const [expanded, setExpanded] = useState(false);
-  const [mobile, setMobile] = useState(false);
+  const [sidebarState, setSidebarState] = useState<SidebarState>({ expanded: false, hovered: false, mobile: false });
   const sidebar = useSidebar();
+
+  const expanded = sidebarState.expanded;
+  const mobile = sidebarState.mobile;
 
   return (
     <>
-      <Sidebar
-        expanded={false}
-        color='gray'
-        onToggle={(state: SidebarState) => {
-          setExpanded(state.expanded);
-          setMobile(state.mobile);
-        }}
-      >
+      <Sidebar expanded={false} color='gray' shadow='md' onToggle={setSidebarState}>
         <Sidebar.Head>
           <Sidebar.Head.Logo>
             <img className='w-8 h-8 object-contain' src={FarmProduct.WHEAT.img} width={32} height={32} alt='icon' />
@@ -78,30 +73,7 @@ export function Layout() {
         >
           {mobile && <Overlay blur='none' onClick={() => sidebar.toggleMobile()} className='md:hidden z-40' />}
 
-          <header className='flex flex-row sticky top-0 px-8 items-center bg-white border-b border-b-gray-100 w-full shadow-sm min-h-[4rem]'>
-            <span>
-              <Breadcrumbs>
-                <Breadcrumbs.Item>
-                  <HomeSvg />
-                </Breadcrumbs.Item>
-                <Breadcrumbs.Item>Items</Breadcrumbs.Item>
-              </Breadcrumbs>
-            </span>
-
-            <Button
-              onClick={() => sidebar.toggleMobile()}
-              size='sm'
-              color='white'
-              icon
-              className='ml-auto flex md:hidden'
-            >
-              <MenuSvg size={24} className='text-black' />
-            </Button>
-          </header>
-
-          <div className='w-full h-full p-8'>
-            <Outlet />
-          </div>
+          <Outlet />
         </main>
       </div>
     </>

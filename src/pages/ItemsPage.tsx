@@ -1,6 +1,8 @@
 import { Text } from "@rewind-ui/core";
 
+import { Breadcrumb } from "../components";
 import { ItemCard } from "../components/ItemCard";
+import { PageLayout } from "../layouts/PageLayout";
 import {
   AlchemizeProduct,
   CookingProduct,
@@ -31,19 +33,21 @@ export function ItemsPage() {
   console.log("Render", ItemsPage.name);
 
   return (
-    <div className='flex flex-col gap-4 justify-start items-stretch'>
-      {content.map(([title, items]) => (
-        <div key={title}>
-          <Text variant='h3' className='border-b-2 border-opacity-60 border-blue-400 px-2'>
-            {title}
-          </Text>
-          <div className='flex flex-row flex-wrap gap-2 py-2'>
-            {items.map((v) => (
-              <ItemCard key={v.filename} item={v} />
-            ))}
+    <PageLayout title={<Breadcrumb items={[{ content: "Items" }]} />}>
+      <div className='flex flex-col gap-4 justify-start items-stretch'>
+        {content.map(([title, items]) => (
+          <div key={title}>
+            <Text variant='h3' className='border-y-2 border-opacity-60 border-blue-400 px-2'>
+              {title}
+            </Text>
+            <div className='flex flex-row flex-wrap gap-2 py-2'>
+              {items.map((v) => (
+                <ItemCard key={v.filename} item={v} />
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </PageLayout>
   );
 }
