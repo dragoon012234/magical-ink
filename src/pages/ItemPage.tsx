@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 
-import { Breadcrumb } from "../components";
+import { Breadcrumb, ProduceTable, SectionTitle } from "../components";
 import { PageLayout } from "../layouts/PageLayout";
 import { findItem } from "../types";
 import { EmptyPage } from "./EmptyPage";
@@ -17,7 +17,12 @@ export function ItemPage() {
 
   return (
     <PageLayout title={breadcrumb}>
-      <div>{item.name}</div>
+      <div className='flex flex-col gap-4 justify-start items-stretch'>
+        <SectionTitle title='Stat' />
+
+        <SectionTitle title='Production chain' />
+        <ProduceTable referenceResource={item} />
+      </div>
     </PageLayout>
   );
 }
