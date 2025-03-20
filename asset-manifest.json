@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/magical-ink/static/css/main.b2bb3490.css",
+    "main.js": "/magical-ink/static/js/main.8c2155fe.js",
+    "static/js/453.b89df201.chunk.js": "/magical-ink/static/js/453.b89df201.chunk.js",
+    "index.html": "/magical-ink/index.html",
+    "main.b2bb3490.css.map": "/magical-ink/static/css/main.b2bb3490.css.map",
+    "main.8c2155fe.js.map": "/magical-ink/static/js/main.8c2155fe.js.map",
+    "453.b89df201.chunk.js.map": "/magical-ink/static/js/453.b89df201.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b2bb3490.css",
+    "static/js/main.8c2155fe.js"
+  ]
+}
