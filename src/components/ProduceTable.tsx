@@ -18,8 +18,7 @@ const offset: Position = { x: (itemSpace.w - itemSize.w) / 2, y: (itemSpace.h - 
 const uniqueKeyer = {
   i: 0,
   get key() {
-    ++this.i;
-    return this.i;
+    return ++this.i;
   },
   reset() {
     this.i = 0;
@@ -153,7 +152,7 @@ function resolveProduceNode(info: NodeInfo, origin: [number, number], includePar
     pos.x = origin[0] + offset.x;
     pos.y = origin[1] + (size.h - itemSpace.h) / 2 + offset.y;
     jsxs.push(
-      <div className='absolute' style={_p(pos)}>
+      <div key={info.jsx.key} className='absolute' style={_p(pos)}>
         {info.jsx}
       </div>,
     );
@@ -181,7 +180,7 @@ function resolveIngredientNode(
     pos.x = origin[0] + (size.w - itemSpace.w) + offset.x;
     pos.y = origin[1] + (size.h - itemSpace.h) / 2 + offset.y;
     jsxs.push(
-      <div className='absolute' style={_p(pos)}>
+      <div key={info.jsx.key} className='absolute' style={_p(pos)}>
         {info.jsx}
       </div>,
     );
