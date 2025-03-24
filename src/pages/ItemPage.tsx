@@ -1,12 +1,12 @@
 import { Text } from "@rewind-ui/core";
 import { useParams } from "react-router";
 
-import { Breadcrumb, ProduceTable, SectionTitle } from "../components";
+import { Breadcrumb, IngredientChip, ProduceTable, SectionTitle } from "../components";
 import { PageLayout } from "../layouts/PageLayout";
 import { findItem } from "../types";
 import { EmptyPage } from "./EmptyPage";
-import { CoinHandoverSvg, CoinSvg } from "../svgs";
-import { numberFormat } from "../utils";
+import { CoinHandoverSvg, CoinSvg, IngredientSvg } from "../svgs";
+import { isProduct, numberFormat } from "../utils";
 
 export function ItemPage() {
   const params = useParams<"catorage" | "item">();
@@ -17,6 +17,14 @@ export function ItemPage() {
   }
 
   const breadcrumb = <Breadcrumb items={[{ content: "Items", href: "/magical-ink/items" }, { content: item.name }]} />;
+
+  const product = isProduct(item);
+  const ingredients = product
+    ? item.ingredient.map((v) => <IngredientChip key={v.ingredient.filename} {...v} />)
+    : null;
+  const rawIngredients = product
+    ? item.calRawIngredients().map((v) => <IngredientChip key={v.ingredient.filename} {...v} />)
+    : null;
 
   return (
     <PageLayout title={breadcrumb}>
@@ -39,6 +47,22 @@ export function ItemPage() {
               <CoinHandoverSvg size={24} />
               <Text as='p'>{`Wish price: ${numberFormat(item.wishPrice)}`}</Text>
             </div>
+
+            {product && (
+              <>
+                <div className='flex flex-row gap-1 justify-start items-center'>
+                  <IngredientSvg size={24} />
+                  <Text as='p'>Ingredients:</Text>
+                  {ingredients}
+                </div>
+
+                <div className='flex flex-row gap-1 justify-start items-center'>
+                  <IngredientSvg size={24} />
+                  <Text as='p'>Raw Ingredients:</Text>
+                  {rawIngredients}
+                </div>
+              </>
+            )}
           </div>
         </div>
 

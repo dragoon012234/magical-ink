@@ -222,11 +222,7 @@ function createIngredientLink(info: NodeInfo): React.ReactElement[] {
         y: v.pos.y + itemSize.h / 2,
       };
 
-      return (
-        <>
-          <Link key={`link_${uniqueKeyer.key}`} start={_out} end={_in} />
-        </>
-      );
+      return <Link key={`link_${uniqueKeyer.key}`} start={_out} end={_in} />;
     });
 
     const childLinks = info.child.flatMap(createProduceLink);
