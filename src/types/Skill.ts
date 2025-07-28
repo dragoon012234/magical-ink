@@ -1,3 +1,4 @@
+import { nameToPath } from "../utils";
 import { BasicObject } from "./BasicObject";
 
 export class Skill extends BasicObject {
@@ -8,14 +9,42 @@ export class Skill extends BasicObject {
     return `${process.env.PUBLIC_URL}/imgs/skills/${this.filename}.png`;
   }
 
-  static readonly FARM = new Skill(1, "Farm");
-  static readonly TREE_FARM = new Skill(2, "Tree Farm");
-  static readonly COOKING = new Skill(3, "Cooking");
-  static readonly ALCHEMIZE = new Skill(4, "Alchemize");
-  static readonly MATERIALS_AND_TOOLS_PRODUCTION = new Skill(5, "Materials and Tools Production");
-  static readonly ORE_GENERATION = new Skill(6, "Ore Generation");
-  static readonly FURNITURE_PRODUCTION = new Skill(7, "Furniture Production");
-  static readonly NATURE_CIRCULATION = new Skill(8, "Nature Circulation");
-  static readonly BANISH = new Skill(9, "Banish");
-  static readonly COMBAT = new Skill(10, "Combat");
+  static readonly NATURE_CIRCULATION: Skill;
+  static readonly BANISH: Skill;
+  static readonly COMBAT: Skill;
+
+  static readonly FARM: Skill;
+  static readonly TREE_FARM: Skill;
+
+  static readonly COOKING: Skill;
+  static readonly ALCHEMIZE: Skill;
+  static readonly MATERIALS_AND_TOOLS_PRODUCTION: Skill;
+  static readonly ORE_GENERATION: Skill;
+  static readonly FURNITURE_PRODUCTION: Skill;
+  static readonly TAILORING: Skill;
+  static readonly SPARKLING_PRODUCTION: Skill;
 }
+
+(() => {
+  const initial = [
+    ["Nature Circulation"],
+    ["Banish"],
+    ["Combat"],
+    ["Farm"],
+    ["Tree Farm"],
+    ["Cooking"],
+    ["Alchemize"],
+    ["Materials and Tools Production"],
+    ["Ore Generation"],
+    ["Furniture Production"],
+    ["Tailoring"],
+    ["Sparkling Production"],
+  ] as const;
+
+  const cls: Record<string, Skill> = Skill as any;
+  for (let id = 1; id <= initial.length; ++id) {
+    const [name] = initial[id - 1];
+    const key = nameToPath(name).toUpperCase();
+    cls[key] = new Skill(id, name);
+  }
+})();
