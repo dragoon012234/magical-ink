@@ -5,16 +5,18 @@ import type { Skill } from "./Skill";
 export class Resource extends BasicObject {
   price: number;
   wishPrice: number;
+  widhExp: number;
   category: Skill;
 
   ingredientFor: Product[];
   layer: number = 0;
   isLastChainProduct: boolean = true;
 
-  constructor(id: number, name: string, price: number, wishPrice: number, category: Skill) {
+  constructor(id: number, name: string, price: number, wishPrice: number, widhExp: number, category: Skill) {
     super(id, name);
     this.price = price;
     this.wishPrice = wishPrice;
+    this.widhExp = widhExp;
     this.category = category;
 
     this.ingredientFor = [];

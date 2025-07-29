@@ -3,8 +3,8 @@ import { Resource } from "./Resource";
 import { Skill } from "./Skill";
 
 export class NatureItem extends Resource {
-  constructor(id: number, name: string, price: number, wishPrice: number) {
-    super(id, name, price, wishPrice, Skill.NATURE_CIRCULATION);
+  constructor(id: number, name: string, price: number, wishPrice: number, wishExp: number) {
+    super(id, name, price, wishPrice, wishExp, Skill.NATURE_CIRCULATION);
   }
 
   static readonly PEBBLE: NatureItem;
@@ -20,17 +20,17 @@ export class NatureItem extends Resource {
 
 (() => {
   const initial = [
-    ["Pebble", 7, 22],
-    ["Branch", 7, 22],
-    ["Boulder", 7, 22],
-    ["Log", 7, 22],
-    ["Herb", 7, 22],
+    ["Pebble", 7, 22, 1],
+    ["Branch", 7, 22, 1],
+    ["Boulder", 7, 22, 1],
+    ["Log", 7, 22, 1],
+    ["Herb", 7, 22, 1],
   ] as const;
 
   const cls: Record<string, NatureItem> = NatureItem as any;
   for (let id = 1; id <= initial.length; ++id) {
-    const [name, price, wishPrice] = initial[id - 1];
+    const [name, price, wishPrice, exp] = initial[id - 1];
     const key = nameToPath(name).toUpperCase();
-    cls[key] = new NatureItem(id, name, price, wishPrice);
+    cls[key] = new NatureItem(id, name, price, wishPrice, exp);
   }
 })();

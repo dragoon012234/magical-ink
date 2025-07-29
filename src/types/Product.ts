@@ -13,11 +13,12 @@ export class Product extends Resource {
     name: string,
     price: number,
     wishPrice: number,
+    wishExp: number,
     category: Skill,
     duration: number,
     cost: number,
   ) {
-    super(id, name, price, wishPrice, category);
+    super(id, name, price, wishPrice, wishExp, category);
     this.duration = duration;
     this.cost = cost;
 
