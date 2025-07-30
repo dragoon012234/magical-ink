@@ -2,7 +2,7 @@ import { nameToPath } from "../utils";
 import { Product } from "./Product";
 import { Skill } from "./Skill";
 
-export class EngravingrProduct extends Product {
+export class EngravingProduct extends Product {
   constructor(
     id: number,
     name: string,
@@ -12,15 +12,15 @@ export class EngravingrProduct extends Product {
     duration: number,
     cost: number,
   ) {
-    super(id, name, price, wishPrice, wishExp, Skill.SPARKLING_PRODUCTION, duration, cost);
+    super(id, name, price, wishPrice, wishExp, Skill.ENGRAVING, duration, cost);
   }
 
-  static readonly SILVER_RING: EngravingrProduct;
-  static readonly GOLD_RING: EngravingrProduct;
-  static readonly SILVER_DECORATION: EngravingrProduct;
+  static readonly SILVER_RING: EngravingProduct;
+  static readonly GOLD_RING: EngravingProduct;
+  static readonly SILVER_DECORATION: EngravingProduct;
 
-  static all(): EngravingrProduct[] {
-    return [EngravingrProduct.SILVER_RING, EngravingrProduct.GOLD_RING, EngravingrProduct.SILVER_DECORATION];
+  static all(): EngravingProduct[] {
+    return [EngravingProduct.SILVER_RING, EngravingProduct.GOLD_RING, EngravingProduct.SILVER_DECORATION];
   }
 }
 
@@ -30,10 +30,10 @@ export class EngravingrProduct extends Product {
     ["Gold Ring", 18000, 10660, 108000, 79950, 89785, 448925, 0, 0],
     ["Silver Decoration", 20400, 12432, 122400, 93240, 130016, 650080, 0, 0],
   ] as const;
-  const cls: Record<string, EngravingrProduct> = EngravingrProduct as any;
+  const cls: Record<string, EngravingProduct> = EngravingProduct as any;
   for (let id = 1; id <= initial.length; ++id) {
     const [name, duration, cost, , , price, , wishPrice, exp] = initial[id - 1];
     const key = nameToPath(name).toUpperCase();
-    cls[key] = new EngravingrProduct(id, name, price, wishPrice, exp, duration, cost);
+    cls[key] = new EngravingProduct(id, name, price, wishPrice, exp, duration, cost);
   }
 })();

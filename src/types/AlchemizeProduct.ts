@@ -31,8 +31,8 @@ export class AlchemizeProduct extends Product {
   static readonly LARGE_RED_POTION: AlchemizeProduct;
 
   static readonly LARGE_BLUE_POTION: AlchemizeProduct;
-  static readonly CRIMSON_FRAME_POTION: AlchemizeProduct;
-  static readonly SILVER_ILLUSIOIN_POWDER: AlchemizeProduct;
+  static readonly CRIMSON_FLAME_POTION: AlchemizeProduct;
+  static readonly SILVER_ILLUSION_POWDER: AlchemizeProduct;
   static readonly MAGIC_CATALYST: AlchemizeProduct;
 
   static readonly HEAVENLY_MAGIC_POWDER: AlchemizeProduct;
@@ -52,8 +52,8 @@ export class AlchemizeProduct extends Product {
       AlchemizeProduct.SPIRIT_SPRING_WATER,
       AlchemizeProduct.LARGE_RED_POTION,
       AlchemizeProduct.LARGE_BLUE_POTION,
-      AlchemizeProduct.CRIMSON_FRAME_POTION,
-      AlchemizeProduct.SILVER_ILLUSIOIN_POWDER,
+      AlchemizeProduct.CRIMSON_FLAME_POTION,
+      AlchemizeProduct.SILVER_ILLUSION_POWDER,
       AlchemizeProduct.MAGIC_CATALYST,
       AlchemizeProduct.HEAVENLY_MAGIC_POWDER,
     ];

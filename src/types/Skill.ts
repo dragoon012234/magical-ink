@@ -22,7 +22,7 @@ export class Skill extends BasicObject {
   static readonly ORE_GENERATION: Skill;
   static readonly FURNITURE_PRODUCTION: Skill;
   static readonly TAILORING: Skill;
-  static readonly SPARKLING_PRODUCTION: Skill;
+  static readonly ENGRAVING: Skill;
 }
 
 (() => {
@@ -38,7 +38,7 @@ export class Skill extends BasicObject {
     ["Ore Generation"],
     ["Furniture Production"],
     ["Tailoring"],
-    ["Sparkling Production"],
+    ["Engraving"],
   ] as const;
 
   const cls: Record<string, Skill> = Skill as any;

@@ -4,12 +4,14 @@ import { PageLayout } from "../layouts/PageLayout";
 import {
   AlchemizeProduct,
   CookingProduct,
+  EngravingProduct,
   FarmProduct,
   Furniture,
   MaterialTool,
   MonsterItem,
   NatureItem,
   Ore,
+  TailorProduct,
   TreeFarmProduct,
   WorldMonsterItem,
 } from "../types";
@@ -23,6 +25,8 @@ const content = [
   ["Materials and Tools", MaterialTool.all()],
   ["Ore", Ore.all()],
   ["Furniture", Furniture.all()],
+  ["Tailoring", TailorProduct.all()],
+  ["Engraving", EngravingProduct.all()],
   ["World Monster Drop", WorldMonsterItem.all()],
   ["Monster Drop", MonsterItem.all()],
 ] as const;

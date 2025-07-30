@@ -1,5 +1,6 @@
 import { AlchemizeProduct } from "./AlchemizeProduct";
 import { CookingProduct } from "./CookingProduct";
+import { EngravingProduct } from "./EngravingProduct";
 import { FarmProduct } from "./FarmProduct";
 import { Furniture } from "./Furniture";
 import { MaterialTool } from "./MaterialTool";
@@ -9,100 +10,26 @@ import { Ore } from "./Ore";
 import { Product } from "./Product";
 import { Resource } from "./Resource";
 import { Skill } from "./Skill";
+import { TailorProduct } from "./TailorProduct";
 import { TreeFarmProduct } from "./TreeFarmProduct";
 import { WorldMonsterItem } from "./WoldMonsterItem";
 
 const items: (Product | Resource)[] = [
-  FarmProduct.WHEAT,
-  FarmProduct.STRAWBERRY,
-  FarmProduct.TOMATO,
-  FarmProduct.POPPURI_PETAL,
-  FarmProduct.CARROT,
-  FarmProduct.SUGAR_CANE,
-  FarmProduct.ROSEMARY,
-  FarmProduct.LAVENDER,
+  FarmProduct.all(),
+  TreeFarmProduct.all(),
 
-  TreeFarmProduct.APPLE,
-  TreeFarmProduct.GRAPE,
-  TreeFarmProduct.ORANGE,
-  TreeFarmProduct.MAPPLE_SAP,
-  TreeFarmProduct.PEACH,
-  TreeFarmProduct.CHERRY,
+  CookingProduct.all(),
+  AlchemizeProduct.all(),
+  MaterialTool.all(),
+  Ore.all(),
+  Furniture.all(),
+  TailorProduct.all(),
+  EngravingProduct.all(),
 
-  CookingProduct.RYE_BREAD,
-  CookingProduct.STRAWBERRY_JUICE,
-  CookingProduct.APPLE_JUICE,
-  CookingProduct.TOMATO_SALAD,
-  CookingProduct.RAISIN_BREAD,
-  CookingProduct.TOAST,
-  CookingProduct.ORANGE_MARMALADE,
-  CookingProduct.SCRAMBLE,
-  CookingProduct.CARROT_STEW,
-  CookingProduct.MAPLE_SYRUP,
-  CookingProduct.SUGAR,
-  CookingProduct.BOTTLED_PEACHES,
-  CookingProduct.HERB_OIL,
-  CookingProduct.ROSEMARY_TEA,
-  CookingProduct.ROSEMARY_FOCACCIA,
-  CookingProduct.CHERRY_JUICE,
-  CookingProduct.LAVENDER_COOKIE,
-
-  AlchemizeProduct.SMALL_RED_POTION,
-  AlchemizeProduct.SMALL_BLUE_POTION,
-  AlchemizeProduct.FORESTS_MAGIC_POWDER,
-  AlchemizeProduct.COLD_RESISTANCE_POTION,
-  AlchemizeProduct.MEDIUM_RED_POTION,
-  AlchemizeProduct.MEDIUM_BLUE_POTION,
-  AlchemizeProduct.NATURES_MAGIC_POWDER,
-  AlchemizeProduct.STURDY_POTION,
-  AlchemizeProduct.CONCENTRATION_POTION,
-  AlchemizeProduct.STICKY_HERB_LUMP,
-  AlchemizeProduct.SPIRIT_SPRING_WATER,
-  AlchemizeProduct.LARGE_RED_POTION,
-  AlchemizeProduct.LARGE_BLUE_POTION,
-
-  MaterialTool.WOODEN_NAIL,
-  MaterialTool.WOODEN_PLANK,
-  MaterialTool.WOODEN_HAMMER,
-  MaterialTool.GLASS,
-  MaterialTool.NAIL,
-  MaterialTool.SAND_GRAIN_TWEEZERS,
-  MaterialTool.MORTAR_AND_PESTLE,
-  MaterialTool.PICKAXE,
-  MaterialTool.SANDPAPER,
-
-  Ore.SAND,
-  Ore.SOIL,
-  Ore.METAL_SCRAP,
-  Ore.IRON_ORE,
-  Ore.COPPER_ORE,
-
-  Furniture.RABBIT_SCULPTURE_CHAIR,
-  Furniture.NEATLY_ARRANGED_TABLE,
-  Furniture.RABBIT_SCULPTURE_DRAWER,
-
-  NatureItem.PEBBLE,
-  NatureItem.BRANCH,
-  NatureItem.BOULDER,
-  NatureItem.LOG,
-  NatureItem.HERB,
-
-  WorldMonsterItem.MILK,
-  WorldMonsterItem.EGG,
-  WorldMonsterItem.HONEY,
-  WorldMonsterItem.GELATIN,
-
-  MonsterItem.FROSTY_ICE_GRASS,
-  MonsterItem.COLD_CRYTAL,
-  MonsterItem.AURORA_MUSHROOM,
-  MonsterItem.CACTUS_THORN,
-  MonsterItem.PALM_FRUIT,
-  MonsterItem.SUNLIGHT_GOLD_DUST,
-  MonsterItem.GRAVE_ROBBERS_SACK,
-  MonsterItem.MANA_PERMEATED_THORN,
-  MonsterItem.GOLDEN_FRUIT,
-  MonsterItem.ANCIENT_GOLD_COIN,
-];
+  NatureItem.all(),
+  WorldMonsterItem.all(),
+  MonsterItem.all(),
+].flat();
 
 (function setupCookingIngredient() {
   CookingProduct.RYE_BREAD.ingredient.push({ ingredient: FarmProduct.WHEAT, count: 2 });
@@ -163,6 +90,29 @@ const items: (Product | Resource)[] = [
     { ingredient: AlchemizeProduct.SPIRIT_SPRING_WATER, count: 1 },
     { ingredient: WorldMonsterItem.EGG, count: 1 },
   );
+  CookingProduct.CHEESE.ingredient.push(
+    { ingredient: WorldMonsterItem.MILK, count: 2 },
+    { ingredient: AlchemizeProduct.NATURES_MAGIC_POWDER, count: 1 },
+    { ingredient: Ore.SALT, count: 2 },
+  );
+  CookingProduct.CHERRY_CUPCAKE.ingredient.push(
+    { ingredient: CookingProduct.RYE_BREAD, count: 2 },
+    { ingredient: TreeFarmProduct.CHERRY, count: 1 },
+    { ingredient: AlchemizeProduct.LARGE_RED_POTION, count: 1 },
+  );
+  CookingProduct.FRUIT_TEA.ingredient.push(
+    { ingredient: TreeFarmProduct.GRAPE, count: 1 },
+    { ingredient: FarmProduct.ROSEMARY, count: 1 },
+    { ingredient: AlchemizeProduct.LARGE_BLUE_POTION, count: 1 },
+  );
+  CookingProduct.PUMPKIN_SOUP.ingredient.push(
+    { ingredient: FarmProduct.PUMPKIN, count: 2 },
+    { ingredient: AlchemizeProduct.STICKY_HERB_LUMP, count: 2 },
+  );
+  CookingProduct.PUMPKIN_PIE.ingredient.push(
+    { ingredient: FarmProduct.PUMPKIN, count: 1 },
+    { ingredient: AlchemizeProduct.CRIMSON_FLAME_POTION, count: 1 },
+  );
 })();
 
 (function setupAlchemizeIngredient() {
@@ -220,6 +170,23 @@ const items: (Product | Resource)[] = [
     { ingredient: FarmProduct.LAVENDER, count: 1 },
     { ingredient: MaterialTool.MORTAR_AND_PESTLE, count: 1 },
   );
+  AlchemizeProduct.CRIMSON_FLAME_POTION.ingredient.push(
+    { ingredient: WorldMonsterItem.MUSHROOM, count: 1 },
+    { ingredient: Ore.COAL, count: 1 },
+  );
+  AlchemizeProduct.SILVER_ILLUSION_POWDER.ingredient.push(
+    { ingredient: Ore.SILVER_ORE, count: 1 },
+    { ingredient: MaterialTool.GLASS, count: 1 },
+  );
+  AlchemizeProduct.MAGIC_CATALYST.ingredient.push(
+    { ingredient: Ore.SILVER_ORE, count: 1 },
+    { ingredient: MaterialTool.SAND_GRAIN_TWEEZERS, count: 1 },
+  );
+  AlchemizeProduct.HEAVENLY_MAGIC_POWDER.ingredient.push(
+    { ingredient: TreeFarmProduct.CHERRY, count: 2 },
+    { ingredient: FarmProduct.PUMPKIN, count: 2 },
+    { ingredient: Ore.SALT, count: 1 },
+  );
 })();
 
 (function setupMaterialToolIngredient() {
@@ -247,6 +214,27 @@ const items: (Product | Resource)[] = [
     { ingredient: MaterialTool.NAIL, count: 1 },
     { ingredient: Ore.SAND, count: 2 },
   );
+  MaterialTool.TOOL_BAG.ingredient.push(
+    { ingredient: Ore.COPPER_ORE, count: 1 },
+    { ingredient: MaterialTool.WOODEN_NAIL, count: 1 },
+    { ingredient: CookingProduct.SUGAR, count: 2 },
+  );
+  MaterialTool.CRIMSON_FLAME_LAMP.ingredient.push(
+    { ingredient: AlchemizeProduct.CRIMSON_FLAME_POTION, count: 1 },
+    { ingredient: NatureItem.LOG, count: 2 },
+  );
+  MaterialTool.SILVER_INGOT.ingredient.push(
+    { ingredient: Ore.SILVER_ORE, count: 1 },
+    { ingredient: AlchemizeProduct.NATURES_MAGIC_POWDER, count: 2 },
+  );
+  MaterialTool.GOLD_INGOT.ingredient.push(
+    { ingredient: Ore.GOLD_ORE, count: 1 },
+    { ingredient: AlchemizeProduct.CONCENTRATION_POTION, count: 2 },
+  );
+  MaterialTool.EBONY_NEEDLE.ingredient.push(
+    { ingredient: TreeFarmProduct.EBONY_WOOD, count: 1 },
+    { ingredient: AlchemizeProduct.SILVER_ILLUSION_POWDER, count: 1 },
+  );
 })();
 
 (function setupOreIngredient() {
@@ -258,6 +246,10 @@ const items: (Product | Resource)[] = [
     { ingredient: NatureItem.PEBBLE, count: 2 },
     { ingredient: NatureItem.BOULDER, count: 2 },
   );
+  Ore.SALT.ingredient.push({ ingredient: MaterialTool.WOODEN_HAMMER, count: 2 });
+  Ore.COAL.ingredient.push({ ingredient: MaterialTool.WOODEN_HAMMER, count: 2 });
+  Ore.SILVER_ORE.ingredient.push({ ingredient: MaterialTool.PICKAXE, count: 1 });
+  Ore.GOLD_ORE.ingredient.push({ ingredient: MaterialTool.PICKAXE, count: 1 });
 })();
 
 (function setupFurnitureIngredient() {
@@ -274,6 +266,56 @@ const items: (Product | Resource)[] = [
     { ingredient: MaterialTool.SANDPAPER, count: 1 },
     { ingredient: AlchemizeProduct.CONCENTRATION_POTION, count: 1 },
     { ingredient: NatureItem.LOG, count: 4 },
+  );
+  Furniture.SOFA.ingredient.push(
+    { ingredient: MaterialTool.WOODEN_NAIL, count: 2 },
+    { ingredient: TailorProduct.FAIRY_CLOTH, count: 1 },
+  );
+  Furniture.WARDROBE.ingredient.push(
+    { ingredient: MaterialTool.SANDPAPER, count: 1 },
+    { ingredient: AlchemizeProduct.SPIRIT_SPRING_WATER, count: 1 },
+  );
+  Furniture.TEA_TABLE.ingredient.push(
+    { ingredient: MaterialTool.SANDPAPER, count: 1 },
+    { ingredient: CookingProduct.ROSEMARY_TEA, count: 1 },
+  );
+  Furniture.EBONY_BED.ingredient.push(
+    { ingredient: TreeFarmProduct.EBONY_WOOD, count: 1 },
+    { ingredient: MaterialTool.TOOL_BAG, count: 1 },
+  );
+})();
+
+(function setupTailorIngredient() {
+  TailorProduct.FAIRY_CLOTH.ingredient.push(
+    { ingredient: TreeFarmProduct.COTTON, count: 2 },
+    { ingredient: WorldMonsterItem.MUSHROOM, count: 1 },
+  );
+  TailorProduct.SMALL_HAT.ingredient.push(
+    { ingredient: TreeFarmProduct.COTTON, count: 2 },
+    { ingredient: MaterialTool.SAND_GRAIN_TWEEZERS, count: 1 },
+  );
+  TailorProduct.SMALL_CLOTHES.ingredient.push(
+    { ingredient: TailorProduct.FAIRY_CLOTH, count: 1 },
+    { ingredient: AlchemizeProduct.STURDY_POTION, count: 1 },
+  );
+  TailorProduct.FUR_BALL.ingredient.push(
+    { ingredient: WorldMonsterItem.WHITE_FUR, count: 1 },
+    { ingredient: MaterialTool.TOOL_BAG, count: 1 },
+  );
+})();
+
+(function setupEngraveIngredient() {
+  EngravingProduct.SILVER_RING.ingredient.push(
+    { ingredient: Ore.SILVER_ORE, count: 1 },
+    { ingredient: MaterialTool.SAND_GRAIN_TWEEZERS, count: 1 },
+  );
+  EngravingProduct.GOLD_RING.ingredient.push(
+    { ingredient: Ore.GOLD_ORE, count: 1 },
+    { ingredient: MaterialTool.SANDPAPER, count: 1 },
+  );
+  EngravingProduct.SILVER_DECORATION.ingredient.push(
+    { ingredient: AlchemizeProduct.SILVER_ILLUSION_POWDER, count: 1 },
+    { ingredient: MaterialTool.TOOL_BAG, count: 1 },
   );
 })();
 
@@ -338,16 +380,20 @@ function findItem(item?: string, category?: string) {
 }
 
 const skills = [
+  Skill.NATURE_CIRCULATION,
+  Skill.BANISH,
+  Skill.COMBAT,
+
   Skill.FARM,
   Skill.TREE_FARM,
+
   Skill.COOKING,
   Skill.ALCHEMIZE,
   Skill.MATERIALS_AND_TOOLS_PRODUCTION,
   Skill.ORE_GENERATION,
   Skill.FURNITURE_PRODUCTION,
-  Skill.NATURE_CIRCULATION,
-  Skill.BANISH,
-  Skill.COMBAT,
+  Skill.TAILORING,
+  Skill.ENGRAVING,
 ];
 
 export {
@@ -361,6 +407,8 @@ export {
   MaterialTool,
   Ore,
   Furniture,
+  TailorProduct,
+  EngravingProduct,
   NatureItem,
   WorldMonsterItem,
   MonsterItem,
