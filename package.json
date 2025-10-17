@@ -4,11 +4,13 @@
   "homepage": "https://dragoon012234.github.io/magical-ink",
   "private": true,
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@lottiefiles/dotlottie-react": "^0.13.2",
     "@rewind-ui/core": "^0.20.0",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
     "class-variance-authority": "^0.7.1",
+    "gsap": "^3.13.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router": "^7.3.0",
@@ -29,11 +31,13 @@
     "eslint-config-universe": "^14.0.0",
     "eslint-plugin-prettier": "^5.2.3",
     "gh-pages": "^6.3.0",
+    "jsdom": "^27.0.0",
     "prettier": "^3.5.3",
     "react-scripts": "5.0.1",
     "tailwindcss": "^3.4.17",
     "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zod": "^4.1.12"
   },
   "scripts": {
     "deploy": "gh-pages -d build --remove \"**/*.map\"",

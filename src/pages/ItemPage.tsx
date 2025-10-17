@@ -3,10 +3,10 @@ import { useParams } from "react-router";
 
 import { Breadcrumb, IngredientChip, ProduceTable, SectionTitle } from "../components";
 import { PageLayout } from "../layouts/PageLayout";
-import { findItem } from "../types";
-import { EmptyPage } from "./EmptyPage";
 import { CoinHandoverSvg, CoinSvg, IngredientSvg } from "../svgs";
+import { findItem } from "../types";
 import { isProduct, numberFormat } from "../utils";
+import { EmptyPage } from "./EmptyPage";
 
 export function ItemPage() {
   const params = useParams<"catorage" | "item">();

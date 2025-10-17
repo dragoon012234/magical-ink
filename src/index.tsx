@@ -1,10 +1,22 @@
 import "./index.css";
 
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 import React from "react";
 import ReactDOM from "react-dom/client";
 
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+
+if (!console.render) {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+  console.render = function render(jsx: Function) {
+    console.log("Render", jsx.name);
+  };
+}
+
+gsap.registerPlugin(useGSAP, DrawSVGPlugin);
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
